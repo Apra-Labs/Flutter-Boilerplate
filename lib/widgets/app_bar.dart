@@ -6,7 +6,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showActionButton;
   final Color? bgColor;
   final Color? actionButtonColor;
-  final String? title;
+  final Widget? title;
   final IconData iconName;
 
   const CustomAppBar({
@@ -30,7 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: bgColor,
         elevation: 0,
         centerTitle: true,
-        title: title!.isNotEmpty ? Text(title!) : const Text(""),
+        title: title ?? const Text(""),
         //  imagePath.isNotEmpty
         //     ? Container(
         //         width: 68,
