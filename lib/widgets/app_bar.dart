@@ -60,7 +60,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: actionButtonColor,
               icon: Icon(
                 iconName,
-                size: 45,
+                size: 35,
               ),
             ),
           ),
