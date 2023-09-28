@@ -1,5 +1,11 @@
 {
     "language": "Deutsch",
-    "flutterBoilerplate": "Flutter-Boilerplate"
-
+    "flutterBoilerplate": "Flutter-Boilerplate",
+    "login":"Anmeldung",
+    "email":"Email",
+    "password": "Passwort",
+    "enterYourEmail":"Geben sie ihre E-Mail Adresse ein",
+    "enterYourPassword":"Geben Sie Ihr Passwort ein",
+    "showPassword":"Passwort anzeigen",
+    "invalidEmailOrPassword":"Ungültige E-Mail oder Passwort"
 }
