@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/widgets/theme.dart';
 
 class CustomButton extends StatelessWidget {
   final String btnLabel;
@@ -32,7 +33,8 @@ class CustomButton extends StatelessWidget {
                     borderRadius: borderStyle?.borderRadius ??
                         BorderRadius.circular(30.0),
                     border: Border.all(
-                        color: borderStyle?.color ?? Colors.black, width: 1.0)),
+                        color: borderStyle?.color ?? AppColors.dark,
+                        width: 1.0)),
                 child: TextButton(
                   onPressed: onClick,
                   child: Center(

@@ -72,61 +72,58 @@ class _LoadingDotsState extends State<LoadingDots>
 
   @override
   Widget build(BuildContext context) {
-    //print(animation_1.value <= 0.4 ? 2.5 * animation_1.value : (animation_1.value > 0.40 && animation_1.value <= 0.60) ? 1.0 : 2.5 - (2.5 * animation_1.value));
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Opacity(
-            opacity: (animation_1.value <= 0.4
-                ? 2.5 * animation_1.value
-                : (animation_1.value > 0.40 && animation_1.value <= 0.60)
-                    ? 1.0
-                    : 2.5 - (2.5 * animation_1.value)),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Dot(
-                radius: widget.radius,
-                color: widget.dotOneColor,
-                type: widget.dotType,
-                icon: widget.dotIcon,
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Opacity(
+          opacity: (animation_1.value <= 0.4
+              ? 2.5 * animation_1.value
+              : (animation_1.value > 0.40 && animation_1.value <= 0.60)
+                  ? 1.0
+                  : 2.5 - (2.5 * animation_1.value)),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Dot(
+              radius: widget.radius,
+              color: widget.dotOneColor,
+              type: widget.dotType,
+              icon: widget.dotIcon,
             ),
           ),
-          Opacity(
-            opacity: (animation_2.value <= 0.4
-                ? 2.5 * animation_2.value
-                : (animation_2.value > 0.40 && animation_2.value <= 0.60)
-                    ? 1.0
-                    : 2.5 - (2.5 * animation_2.value)),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Dot(
-                radius: widget.radius,
-                color: widget.dotTwoColor,
-                type: widget.dotType,
-                icon: widget.dotIcon,
-              ),
+        ),
+        Opacity(
+          opacity: (animation_2.value <= 0.4
+              ? 2.5 * animation_2.value
+              : (animation_2.value > 0.40 && animation_2.value <= 0.60)
+                  ? 1.0
+                  : 2.5 - (2.5 * animation_2.value)),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Dot(
+              radius: widget.radius,
+              color: widget.dotTwoColor,
+              type: widget.dotType,
+              icon: widget.dotIcon,
             ),
           ),
-          Opacity(
-            opacity: (animation_3.value <= 0.4
-                ? 2.5 * animation_3.value
-                : (animation_3.value > 0.40 && animation_3.value <= 0.60)
-                    ? 1.0
-                    : 2.5 - (2.5 * animation_3.value)),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Dot(
-                radius: widget.radius,
-                color: widget.dotThreeColor,
-                type: widget.dotType,
-                icon: widget.dotIcon,
-              ),
+        ),
+        Opacity(
+          opacity: (animation_3.value <= 0.4
+              ? 2.5 * animation_3.value
+              : (animation_3.value > 0.40 && animation_3.value <= 0.60)
+                  ? 1.0
+                  : 2.5 - (2.5 * animation_3.value)),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Dot(
+              radius: widget.radius,
+              color: widget.dotThreeColor,
+              type: widget.dotType,
+              icon: widget.dotIcon,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

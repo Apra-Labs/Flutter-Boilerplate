@@ -3,7 +3,6 @@ import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/widgets/custom_button.dart';
 import 'package:flutter_boilerplate/widgets/theme.dart';
 
-// ignore: must_be_immutable
 class Alert extends StatelessWidget {
   final String title;
   final String message;
@@ -59,7 +58,7 @@ class Alert extends StatelessWidget {
                     style: const TextStyle(
                       color: AppColors.dark,
                       backgroundColor: AppColors.light,
-                      fontSize: 16,
+                      fontSize: FontSize.medium,
                     ),
                     borderStyle: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
@@ -76,7 +75,7 @@ class Alert extends StatelessWidget {
                     style: const TextStyle(
                       color: AppColors.dark,
                       backgroundColor: AppColors.positive,
-                      fontSize: 16,
+                      fontSize: FontSize.medium,
                     ),
                     borderStyle: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),

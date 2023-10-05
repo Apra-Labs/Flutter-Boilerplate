@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/widgets/theme.dart';
 
 class CircularProgress extends StatelessWidget {
   final double? size;
@@ -17,7 +18,7 @@ class CircularProgress extends StatelessWidget {
       height: size ?? 40,
       child: CircularProgressIndicator(
         strokeWidth: 4.0,
-        valueColor: AlwaysStoppedAnimation<Color>(color ?? Colors.amber),
+        valueColor: AlwaysStoppedAnimation<Color>(color ?? AppColors.warning),
       ),
     );
   }

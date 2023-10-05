@@ -14,6 +14,9 @@ class AppColors {
   static const Color actionbar = Color.fromRGBO(230, 230, 230, 1);
   static const Color gray3 = Color.fromRGBO(169, 184, 255, 1);
   static const Color blue = Color.fromRGBO(83, 112, 255, 1);
+  static const Color warning = Colors.amber;
+  static const Color transparent = Colors.transparent;
+  static const Color white = Colors.white;
 }
 
 class FontSize {
@@ -28,6 +31,6 @@ class FontSize {
   static const double normal = 14.0;
 }
 
-// class BorderRadius {
-//   static const double button = 20.0;
-// }
+class BorderRadiusClass {
+  static const double button = 30.0;
+}
