@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/alert_variants.dart';
+import 'package:flutter_boilerplate/theme.dart';
 import 'package:flutter_boilerplate/widgets/spinner.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -10,7 +12,7 @@ void main() {
         home: Scaffold(
           body: CircularProgress(
             size: 40.0,
-            color: Colors.blue,
+            variant: Variant.danger,
           ),
         ),
       ),
@@ -29,6 +31,6 @@ void main() {
     expect(
         (circularProgressIndicator.valueColor as AlwaysStoppedAnimation<Color>)
             .value,
-        Colors.blue);
+        AppColors.danger);
   });
 }

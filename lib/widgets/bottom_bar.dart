@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/theme.dart';
 
 class CustomBottomBar extends StatelessWidget {
   final List<BottomBarItem> items;
@@ -33,18 +34,15 @@ class CustomBottomBar extends StatelessWidget {
                 children: [
                   Icon(
                     item.icon,
-                    color: index == selectedIndex
-                        ? item.selectedColor
-                        : item.unselectedColor,
+                    color: index == selectedIndex ? item.selectedColor : null,
                     size: item.iconSize,
                   ),
                   if (item.label != null)
                     Text(
                       item.label!,
                       style: TextStyle(
-                        color: index == selectedIndex
-                            ? item.selectedColor
-                            : item.unselectedColor,
+                        color:
+                            index == selectedIndex ? item.selectedColor : null,
                       ),
                     ),
                 ],
@@ -61,14 +59,14 @@ class BottomBarItem {
   final IconData icon;
   final String? label;
   final Color selectedColor;
-  final Color unselectedColor;
+  // final Color unselectedColor;
   final double iconSize;
 
   BottomBarItem({
     required this.icon,
     this.label,
-    this.selectedColor = Colors.blue,
-    this.unselectedColor = Colors.grey,
+    this.selectedColor = AppColors.danger,
+    // this.unselectedColor = Colors.grey,
     this.iconSize = 30.0,
   });
 }

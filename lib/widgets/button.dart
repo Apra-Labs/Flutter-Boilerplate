@@ -1,55 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/theme.dart';
+import 'package:flutter_boilerplate/button_variants.dart';
 
 class CustomButton extends StatelessWidget {
   final String btnLabel;
   final VoidCallback onClick;
-  final double? buttonWidth;
-  final double? buttonHeight;
-  final TextStyle? style; //todo: theming support
+  final ButtonVariant variant;
   final BoxDecoration? borderStyle;
 
   const CustomButton({
     Key? key,
     required this.btnLabel,
     required this.onClick,
-    this.style,
-    this.buttonWidth,
-    this.buttonHeight,
     this.borderStyle,
+    this.variant = ButtonVariant.primary, // Default variant is primary
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Center(
-        child: SizedBox(
-            width:
-                buttonWidth ?? screenWidth * 0.8, //common folder declare width
-            child: Container(
-                constraints: BoxConstraints(minHeight: buttonHeight ?? 55.0),
-                decoration: BoxDecoration(
-                    color: style?.backgroundColor,
-                    borderRadius: borderStyle?.borderRadius ??
-                        BorderRadius.circular(30.0),
-                    border: Border.all(
-                        color: borderStyle?.color ?? AppColors.dark,
-                        width: 1.0)),
-                child: TextButton(
-                  onPressed: onClick,
-                  child: Center(
-                    child: Text(
-                      btnLabel,
-                      style: style ??
-                          TextStyle(
-                            color: style?.color,
-                            fontSize: style?.fontSize,
-                            fontWeight: style?.fontWeight,
-                          ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ))));
+      child: SizedBox(
+        child: Container(
+          decoration: BoxDecoration(
+            color: getButtonBackgroundColor(variant, context),
+            borderRadius:
+                borderStyle?.borderRadius ?? BorderRadius.circular(10.0),
+            border: Border.all(
+              color: getButtonBorderColor(variant, context),
+              width: 1.0,
+            ),
+          ),
+          child: TextButton(
+            onPressed: onClick,
+            style: TextButton.styleFrom(
+              backgroundColor: getButtonBackgroundColor(variant, context),
+            ),
+            child: Center(
+              child: Text(
+                btnLabel,
+                style: getButtonStyle(
+                    variant, context), // Use the style based on the variant
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

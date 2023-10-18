@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/widgets/theme.dart';
+import 'package:flutter_boilerplate/theme.dart';
 
 class TimePicker extends StatelessWidget {
+  //theme
   final TimeOfDay selectedTime;
   final ValueChanged<TimeOfDay>? onTimeChanged;
   final String label;

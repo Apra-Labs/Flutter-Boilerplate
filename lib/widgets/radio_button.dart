@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/alert_variants.dart';
 
 class RadioButton<T> extends StatelessWidget {
+  final Variant variant;
   final T value;
   final T groupValue;
   final ValueChanged<T?>? onChanged;
@@ -11,6 +13,7 @@ class RadioButton<T> extends StatelessWidget {
     required this.value,
     required this.groupValue,
     this.onChanged,
+    this.variant = Variant.primary,
     required this.label,
   });
 
@@ -23,6 +26,7 @@ class RadioButton<T> extends StatelessWidget {
           value: value,
           groupValue: groupValue,
           onChanged: onChanged,
+          activeColor: getBackgroundColor(variant),
         ),
         Text(label),
       ],

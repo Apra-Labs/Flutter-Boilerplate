@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/alert_variants.dart';
 
 class CheckboxButton extends StatelessWidget {
+  final Variant variant;
   final bool value;
   final ValueChanged<bool?>? onChanged;
   final String label;
@@ -9,6 +11,7 @@ class CheckboxButton extends StatelessWidget {
     super.key,
     required this.value,
     required this.label,
+    this.variant = Variant.primary,
     this.onChanged,
   });
 
@@ -19,6 +22,7 @@ class CheckboxButton extends StatelessWidget {
         Checkbox(
           value: value,
           onChanged: onChanged,
+          activeColor: getBackgroundColor(variant),
         ),
         Text(label),
       ],

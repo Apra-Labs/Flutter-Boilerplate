@@ -75,9 +75,9 @@ class _LoginPage extends ConsumerState<LoginPage> {
         title: Text(AppLocalizations.of(context).flutterBoilerplate),
         showActionButton: true,
         iconName: Icons.language,
-        actionButtonColor: AppColors.dark,
+        // actionButtonColor: AppColors.dark,
         onClick: () {},
-        bgColor: AppColors.warning,
+        // bgColor: AppColors.warning,
       ),
       body: Container(
           padding:
@@ -145,12 +145,10 @@ class _LoginPage extends ConsumerState<LoginPage> {
                   onClick: () async {
                     onLogin();
                   },
-                  buttonWidth: screenWidth * 0.4,
-                  buttonHeight: screenHeight * 0.01,
-                  style: const TextStyle(
-                      color: AppColors.gray,
-                      fontSize: FontSize.miniheader,
-                      backgroundColor: AppColors.blue),
+                  // style: const TextStyle(
+                  //     color: AppColors.gray,
+                  //     fontSize: FontSize.miniheader,
+                  //     backgroundColor: AppColors.blue),
                   borderStyle: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       color: AppColors.blue),

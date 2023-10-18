@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/widgets/theme.dart';
+import 'package:flutter_boilerplate/theme.dart';
 
 class DatePicker extends StatelessWidget {
   final DateTime selectedDate;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_boilerplate/widgets/custom_button.dart';
+import 'package:flutter_boilerplate/widgets/button.dart';
 
 void main() {
   testWidgets('CustomButton renders correctly', (WidgetTester tester) async {

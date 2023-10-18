@@ -7,7 +7,8 @@ import 'package:flutter_boilerplate/utils/shared_preferences_utils.dart';
 import 'package:flutter_boilerplate/widgets/app_bar.dart';
 import 'package:flutter_boilerplate/widgets/bottom_bar.dart';
 import 'package:flutter_boilerplate/widgets/circle_avatar.dart';
-import 'package:flutter_boilerplate/theme.dart';
+import 'package:flutter_boilerplate/widgets/headers.dart';
+import 'package:flutter_boilerplate/widgets/paragraph.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../routes/route.dart' as route;
@@ -25,9 +26,6 @@ class ProfilePage extends ConsumerStatefulWidget {
 
 class _ProfilePageState extends ConsumerState<ProfilePage> {
   final TextEditingController nameController = TextEditingController();
-  TimeOfDay selectedTime = TimeOfDay.now();
-  DateTime selectedDate = DateTime.now();
-  Gender selectedGender = Gender.male;
   int selectedIndex = 0;
 
   void onLogout() async {
@@ -43,24 +41,25 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 224, 217, 227),
+      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: CustomAppBar(
-        title: const Text("Profile"),
+        title: Text(
+          "Profile",
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
         showActionButton: true,
         iconName: Icons.logout,
-        actionButtonColor: AppColors.dark,
         onClick: () async {
           onLogout();
         },
-        bgColor: const Color.fromARGB(255, 67, 240, 73),
       ),
       body: ListView(children: <Widget>[
         Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -95,24 +94,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Text(
-                  'John',
-                  style: TextStyle(
-                    fontSize: FontSize.extralarge,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.dark,
-                  ),
+                const Header1(
+                  title: "John",
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  'Flutter Developer',
-                  style: TextStyle(
-                    color: AppColors.positive,
-                    fontSize: FontSize.large,
-                  ),
-                ),
+                const Header3(title: "Flutter Developer"),
                 const SizedBox(
                   height: 20,
                 ),
@@ -122,23 +110,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       child: Container(
                         color: Color(0xFFeec6ca),
                         child: const ListTile(
-                          title: Text(
-                            '5000',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: FontSize.extralarge,
-                              color: Colors.black,
-                            ),
-                          ),
-                          subtitle: Text(
-                            'Followers',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: FontSize.header,
-                              color: Colors.black87,
-                            ),
-                          ),
+                          title: Header2(title: "5000"),
+                          subtitle: Header4(title: "Followers"),
                         ),
                       ),
                     ),
@@ -146,82 +119,44 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       child: Container(
                         color: Color(0xFFffb7c3),
                         child: const ListTile(
-                          title: Text(
-                            '5000',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: FontSize.extralarge,
-                              color: Colors.black,
-                            ),
-                          ),
-                          subtitle: Text(
-                            'Following',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: FontSize.header,
-                              color: Colors.black87,
-                            ),
-                          ),
+                          title: Header2(title: "5000"),
+                          subtitle: Header4(title: "Following"),
                         ),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 const Column(
                   children: <Widget>[
                     ListTile(
-                      title: Text(
-                        'Email',
-                        style: TextStyle(
-                          color: Colors.deepOrange,
-                          fontSize: FontSize.header,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      title: Header4(
+                        title: "Email",
+                        textColor: Colors.deepOrange,
+                        textAlign: TextAlign.left,
                       ),
-                      subtitle: Text(
-                        'john@gmail.com',
-                        style: TextStyle(
-                          fontSize: FontSize.miniheader,
-                        ),
-                      ),
+                      subtitle: Paragraph(text: "john@gmail.com"),
                     ),
                     Divider(),
                     ListTile(
-                      title: Text(
-                        'GitHub',
-                        style: TextStyle(
-                          color: Colors.deepOrange,
-                          fontSize: FontSize.header,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      title: Header4(
+                        title: "GitHub",
+                        textColor: Colors.deepOrange,
+                        textAlign: TextAlign.left,
                       ),
-                      subtitle: Text(
-                        'https://github.com/john',
-                        style: TextStyle(
-                          fontSize: FontSize.miniheader,
-                        ),
-                      ),
+                      subtitle: Paragraph(text: "https://github.com/john"),
                     ),
                     Divider(),
                     ListTile(
-                      title: Text(
-                        'Linkedin',
-                        style: TextStyle(
-                          color: Colors.deepOrange,
-                          fontSize: FontSize.header,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      title: Header4(
+                        title: "Linkedin",
+                        textColor: Colors.deepOrange,
+                        textAlign: TextAlign.left,
                       ),
-                      subtitle: Text(
-                        'www.linkedin.com/in/john-6bba86208',
-                        style: TextStyle(
-                          fontSize: FontSize.miniheader,
-                        ),
-                      ),
+                      subtitle:
+                          Paragraph(text: "www.linkedin.com/in/john-6bba86208"),
                     ),
                   ],
                 ),
@@ -233,17 +168,17 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
           BottomBarItem(
             icon: Icons.settings,
             label: AppLocalizations.of(context).settings,
-            iconSize: 35,
+            iconSize: 33,
           ),
           BottomBarItem(
             icon: Icons.person_pin_sharp,
             label: AppLocalizations.of(context).profile,
-            iconSize: 35,
+            iconSize: 33,
           ),
           BottomBarItem(
             icon: Icons.assignment,
             label: AppLocalizations.of(context).uiKit,
-            iconSize: 35,
+            iconSize: 33,
           ),
         ],
         selectedIndex: 1,

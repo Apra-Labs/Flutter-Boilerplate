@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/widgets/theme.dart';
+import 'package:flutter_boilerplate/alert_variants.dart';
 
 class AppCard extends StatelessWidget {
+  final Variant variant;
   final Widget body;
   final double? padding;
   final double? borderRadius;
@@ -13,7 +14,8 @@ class AppCard extends StatelessWidget {
       required this.body,
       this.padding,
       this.elevation,
-      this.color = AppColors.light,
+      this.color,
+      this.variant = Variant.light,
       this.borderRadius})
       : super(key: key);
 
@@ -21,7 +23,7 @@ class AppCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: elevation ?? 5,
-      color: color,
+      color: color ?? getBackgroundColor(variant),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius ?? 15),
       ),

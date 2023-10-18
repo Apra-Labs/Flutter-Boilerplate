@@ -4,8 +4,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? imagePath;
   final VoidCallback onClick;
   final bool showActionButton;
-  final Color? bgColor;
-  final Color? actionButtonColor;
+  // final Color? bgColor;
+  // final Color? actionButtonColor;
   final Widget? title;
   final IconData iconName;
 
@@ -14,8 +14,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.imagePath,
     required this.onClick,
     this.showActionButton = true,
-    this.bgColor = Colors.transparent,
-    this.actionButtonColor = Colors.black,
+    // this.bgColor = Colors.transparent,
+    // this.actionButtonColor = Colors.black,
     this.iconName = Icons.close,
     this.title,
   });
@@ -27,7 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: AppBar(
-        backgroundColor: bgColor,
+        // backgroundColor: bgColor,
         elevation: 0,
         centerTitle: true,
         title: title ?? const Text(""),
@@ -57,7 +57,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             visible: showActionButton,
             child: IconButton(
               onPressed: onClick,
-              color: actionButtonColor,
+              // color: actionButtonColor,
               icon: Icon(
                 iconName,
                 size: 35,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/alert_variants.dart';
+import 'package:flutter_boilerplate/button_variants.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
-import 'package:flutter_boilerplate/widgets/custom_button.dart';
-import 'package:flutter_boilerplate/widgets/theme.dart';
+import 'package:flutter_boilerplate/widgets/button.dart';
 
 class Alert extends StatelessWidget {
+  final Variant variant;
   final String title;
   final String message;
   final AlignmentGeometry? titleAlignment;
@@ -25,23 +27,29 @@ class Alert extends StatelessWidget {
     this.body,
     this.acceptLabel = Texts.acceptLabel,
     this.denyLabel = Texts.closeLabel,
+    this.variant = Variant.primary, // Default variant is primary
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return AlertDialog(
+      backgroundColor: getBackgroundColor(variant),
       title: Align(
-          alignment: titleAlignment ?? Alignment.center, child: Text(title)),
-      titleTextStyle: titleTextStyle,
+        alignment: titleAlignment ?? Alignment.center,
+        child: Text(
+          title,
+          style: titleTextStyle ?? getStyle(variant),
+        ),
+      ),
       contentPadding: const EdgeInsets.all(20.0),
       content: SingleChildScrollView(
         child: GestureDetector(
           child: Column(
             children: [
-              Text(message),
+              Text(
+                message,
+                style: getStyle(variant),
+              ),
               body ?? Container(),
               const SizedBox(height: 20),
               Row(
@@ -53,33 +61,15 @@ class Alert extends StatelessWidget {
                       onDeny();
                       Navigator.of(context).pop();
                     },
-                    buttonWidth: screenWidth * 0.2,
-                    buttonHeight: screenHeight * 0.04,
-                    style: const TextStyle(
-                      color: AppColors.dark,
-                      backgroundColor: AppColors.light,
-                      fontSize: FontSize.medium,
-                    ),
-                    borderStyle: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        color: AppColors.dark),
+                    variant: ButtonVariant.outlineLight,
                   ),
                   CustomButton(
                     btnLabel: acceptLabel,
                     onClick: () {
-                      onDeny();
+                      onAccept();
                       Navigator.of(context).pop();
                     },
-                    buttonWidth: screenWidth * 0.2,
-                    buttonHeight: screenHeight * 0.04,
-                    style: const TextStyle(
-                      color: AppColors.dark,
-                      backgroundColor: AppColors.positive,
-                      fontSize: FontSize.medium,
-                    ),
-                    borderStyle: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        color: AppColors.dark),
+                    variant: ButtonVariant.outlineLight,
                   ),
                 ],
               ),

@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/theme.dart';
+import 'package:flutter_boilerplate/alert_variants.dart';
 
 class CircularProgress extends StatelessWidget {
-  //changing name
+  final Variant variant;
   final double? size;
-  final Color? color;
 
-  const CircularProgress({
-    super.key,
-    this.size,
-    this.color,
-  });
+  const CircularProgress(
+      {super.key, this.size, this.variant = Variant.primary});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +15,7 @@ class CircularProgress extends StatelessWidget {
       height: size ?? 40,
       child: CircularProgressIndicator(
         strokeWidth: 4.0,
-        valueColor: AlwaysStoppedAnimation<Color>(color ?? AppColors.warning),
+        valueColor: AlwaysStoppedAnimation<Color>(getBackgroundColor(variant)),
       ),
     );
   }

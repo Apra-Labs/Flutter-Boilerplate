@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/providers/providers.dart';
 import 'package:flutter_boilerplate/utils/route_utils.dart';
 import 'package:flutter_boilerplate/widgets/app_bar.dart';
 import 'package:flutter_boilerplate/widgets/bottom_bar.dart';
@@ -17,25 +18,34 @@ class SettingsPage extends ConsumerStatefulWidget {
 }
 
 class _SettingsPage extends ConsumerState<SettingsPage> {
-  bool isSwitched = false;
-
   @override
   Widget build(BuildContext context) {
+    var isDarkTheme = ref.read(appThemeProvider);
     return Scaffold(
       appBar: CustomAppBar(
-        title: Text(AppLocalizations.of(context).settings),
+        title: Text(
+          //functions - provide style as arg in 1 func.
+          AppLocalizations.of(context).settings,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall, //create header & paragraph widgets
+        ),
         showActionButton: true,
         iconName: Icons.logout,
-        actionButtonColor: AppColors.dark,
         onClick: () {},
-        bgColor: AppColors.warning,
       ),
       body: SettingsList(sections: [
         SettingsSection(
-          title: Text(AppLocalizations.of(context).systemSettings),
+          title: Text(
+            AppLocalizations.of(context).systemSettings,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
           tiles: [
             SettingsTile(
-              title: Text(AppLocalizations.of(context).languages),
+              title: Text(
+                AppLocalizations.of(context).languages,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
               description: const Text('English'),
               leading: const Icon(Icons.language),
               onPressed: (BuildContext context) {
@@ -54,19 +64,26 @@ class _SettingsPage extends ConsumerState<SettingsPage> {
               },
             ),
             SettingsTile.switchTile(
-              initialValue: isSwitched,
-              title: Text(AppLocalizations.of(context).darkTheme),
+              initialValue: isDarkTheme,
+              title: Text(
+                AppLocalizations.of(context).darkTheme,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
               leading: const Icon(Icons.phone_android),
               onToggle: (value) {
                 setState(() {
-                  isSwitched = value;
+                  ref.read(appThemeProvider.notifier).state = value;
+                  isDarkTheme = value;
                 });
               },
             ),
           ],
         ),
         SettingsSection(
-          title: Text(AppLocalizations.of(context).systemSecurity),
+          title: Text(
+            AppLocalizations.of(context).systemSecurity,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
           tiles: [
             SettingsTile(
               title: Text(AppLocalizations.of(context).security),
@@ -88,17 +105,17 @@ class _SettingsPage extends ConsumerState<SettingsPage> {
           BottomBarItem(
             icon: Icons.settings,
             label: AppLocalizations.of(context).settings,
-            iconSize: 35,
+            iconSize: 33,
           ),
           BottomBarItem(
             icon: Icons.person_pin_sharp,
             label: AppLocalizations.of(context).profile,
-            iconSize: 35,
+            iconSize: 33,
           ),
           BottomBarItem(
             icon: Icons.assignment,
             label: AppLocalizations.of(context).uiKit,
-            iconSize: 35,
+            iconSize: 33,
           ),
         ],
         selectedIndex: 0,
