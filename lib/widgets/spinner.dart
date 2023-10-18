@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/widgets/theme.dart';
+import 'package:flutter_boilerplate/theme.dart';
 
 class CircularProgress extends StatelessWidget {
+  //changing name
   final double? size;
   final Color? color;
 

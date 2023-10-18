@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/widgets/theme.dart';
+import 'package:flutter_boilerplate/utils/route_utils.dart';
+import 'package:flutter_boilerplate/utils/shared_preferences_utils.dart';
+import 'package:flutter_boilerplate/theme.dart';
 import '../../routes/route.dart' as route;
 
 class SplashScreen extends StatefulWidget {
@@ -23,16 +25,26 @@ class _SplashScreenState extends State<SplashScreen>
         CurvedAnimation(parent: _controller, curve: Curves.easeInCubic);
 
     _controller.forward();
-
-    Timer(const Duration(seconds: 4),
-        () => Navigator.pushReplacementNamed(context, route.loginPage));
+    setLogginCredentails();
+    checkLoginStatusAndNavigate();
     super.initState();
+  }
+
+  void checkLoginStatusAndNavigate() async {
+    bool isLoggedIn = await getLoggedInStatus();
+    if (isLoggedIn) {
+      Timer(const Duration(seconds: 4),
+          () => RouteUtils.setRootPage(context, route.profilePage));
+    } else {
+      Timer(const Duration(seconds: 4),
+          () => RouteUtils.setRootPage(context, route.loginPage));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       body: Stack(children: [
         ScaleTransition(
           scale: _animation,

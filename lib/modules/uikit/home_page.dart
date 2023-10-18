@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/modules/login/presentation.dart';
-import 'package:flutter_boilerplate/modules/profile/presentation.dart';
+import 'package:flutter_boilerplate/modules/login/login_page.dart';
+import 'package:flutter_boilerplate/modules/profile/profile_page.dart';
+import 'package:flutter_boilerplate/utils/route_utils.dart';
 import 'package:flutter_boilerplate/widgets/app_bar.dart';
+import 'package:flutter_boilerplate/widgets/bottom_bar.dart';
 import 'package:flutter_boilerplate/widgets/checkbox.dart';
-import 'package:flutter_boilerplate/widgets/circularbar.dart';
-import 'package:flutter_boilerplate/widgets/custom_button.dart';
+import 'package:flutter_boilerplate/widgets/spinner.dart';
+import 'package:flutter_boilerplate/widgets/button.dart';
 import 'package:flutter_boilerplate/widgets/date_picker.dart';
 import 'package:flutter_boilerplate/widgets/dropdown.dart';
 import 'package:flutter_boilerplate/widgets/loading_widget.dart';
 import 'package:flutter_boilerplate/widgets/radio_button.dart';
 import 'package:flutter_boilerplate/widgets/text_input.dart';
-import 'package:flutter_boilerplate/widgets/theme.dart';
+import 'package:flutter_boilerplate/theme.dart';
 import 'package:flutter_boilerplate/widgets/time_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../routes/route.dart' as route;
 
 enum Gender { male, female, other }
 
@@ -213,6 +217,35 @@ class _HomePageState extends ConsumerState<HomePage> {
           ],
         ),
       )),
+      bottomNavigationBar: CustomBottomBar(
+        // icons: const [Icons.settings, Icons.person_pin_sharp, Icons.assignment],
+        items: [
+          BottomBarItem(
+            icon: Icons.settings,
+            label: AppLocalizations.of(context).settings,
+            iconSize: 35,
+          ),
+          BottomBarItem(
+            icon: Icons.person_pin_sharp,
+            label: AppLocalizations.of(context).profile,
+            iconSize: 35,
+          ),
+          BottomBarItem(
+            icon: Icons.assignment,
+            label: AppLocalizations.of(context).uiKit,
+            iconSize: 35,
+          ),
+        ],
+        selectedIndex: 2,
+        onItemSelected: (index) {
+          if (index == 1) {
+            RouteUtils.setRootPage(context, route.profilePage);
+          }
+          if (index == 0) {
+            RouteUtils.setRootPage(context, route.settingsPage);
+          }
+        },
+      ),
     );
   }
 }

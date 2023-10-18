@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/widgets/circularbar.dart';
+import 'package:flutter_boilerplate/widgets/spinner.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

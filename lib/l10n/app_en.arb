@@ -34,5 +34,45 @@
     "invalidEmailOrPassword": "Invalid email or password",
     "@invalidEmailOrPassword": {
         "description": "Invalid email or password"
+    },
+    "settings": "Settings",
+    "@settings" : {
+        "description": "Settings"
+    },
+    "systemSettings": "System settings",
+    "@systemSettings" : {
+        "description": "System settings"
+    },
+    "systemSecurity": "System security",
+    "@systemSecurity" : {
+        "description": "System security"
+    },
+    "security" : "Security",
+    "@security" : {
+        "description": "Security"
+    },
+    "fingerprint" : "Fingerprint",
+    "@fingerprint" : {
+        "description": "Fingerprint"
+    },
+    "useFingerprint": "Use fingerprint",
+    "@useFingerprint": {
+        "description" : "Use fingerprint"
+    },
+    "languages": "Language",
+    "@languages" : {
+        "description": "Language"
+    },
+    "darkTheme" : "Dark theme",
+    "@darkTheme": {
+        "description": "Dark theme"
+    },
+    "profile" : "Profile",
+    "@profile": {
+        "description": "Profile"
+    },
+    "uiKit" : "UI Kit",
+    "@uiKit" : {
+        "description": "UI Kit"
     }
 }

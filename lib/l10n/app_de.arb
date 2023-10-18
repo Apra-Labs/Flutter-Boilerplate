@@ -7,5 +7,15 @@
     "enterYourEmail":"Geben sie ihre E-Mail Adresse ein",
     "enterYourPassword":"Geben Sie Ihr Passwort ein",
     "showPassword":"Passwort anzeigen",
-    "invalidEmailOrPassword":"Ungültige E-Mail oder Passwort"
+    "invalidEmailOrPassword":"Ungültige E-Mail oder Passwort",
+    "settings":"Einstellungen",
+    "systemSettings":"Systemeinstellungen",
+    "systemSecurity":"Systemsicherheit",
+    "security": "Sicherheit",
+    "fingerprint": "Fingerabdruck",
+    "useFingerprint":"Fingerabdruck verwenden",
+    "languages": "Sprache",
+    "darkTheme":"Dunkles Thema",
+    "profile":"Profil",
+    "uiKit": "UI-Kit"
 }

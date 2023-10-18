@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
-import 'package:flutter_boilerplate/widgets/alert.dart';
+import 'package:flutter_boilerplate/utils/loading_utils.dart';
+import 'package:flutter_boilerplate/utils/route_utils.dart';
+import 'package:flutter_boilerplate/utils/shared_preferences_utils.dart';
 import 'package:flutter_boilerplate/widgets/checkbox.dart';
-import 'package:flutter_boilerplate/widgets/custom_button.dart';
-import 'package:flutter_boilerplate/widgets/theme.dart';
+import 'package:flutter_boilerplate/widgets/button.dart';
+import 'package:flutter_boilerplate/theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_boilerplate/widgets/app_bar.dart';
 import 'package:flutter_boilerplate/widgets/text_input.dart';
@@ -11,7 +13,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../routes/route.dart' as route;
 
 final emailProvider = StateProvider<String>((_) => '');
+
+///object
 final passwordProvider = StateProvider<String>((_) => '');
+
+// final widgetState = StateProvider<Object>((_) => {
+//   email: '',
+// });
 
 // 1. extend [ConsumerStatefulWidget]
 class LoginPage extends ConsumerStatefulWidget {
@@ -23,6 +31,7 @@ class LoginPage extends ConsumerStatefulWidget {
 
 // 2. extend [ConsumerState]
 class _LoginPage extends ConsumerState<LoginPage> {
+  //cleanup- lifecycle
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isChecked = false;
@@ -36,19 +45,23 @@ class _LoginPage extends ConsumerState<LoginPage> {
     final email = ref.read(emailProvider);
   }
 
-  void onLogin() {
+  void onLogin() async {
+    LoadingUtils(context).startLoading();
+    await Future.delayed(const Duration(seconds: 5));
+    LoadingUtils(context).stopLoading();
     final email = ref.read(emailProvider);
-    final password = ref.read(passwordProvider);
-    if (LoginCredentials.email == email &&
-        LoginCredentials.password == password) {
-      setState(() {
-        showErrorMsg = false;
-      });
-      Navigator.pushNamed(context, route.profilePage);
-    } else {
-      setState(() {
-        showErrorMsg = true;
-      });
+    for (String item in LoginCredentials.emailList) {
+      if (item == email) {
+        setState(() {
+          showErrorMsg = false;
+        });
+        storeLoggedInStatus(true);
+        RouteUtils.setRootPage(context, route.profilePage);
+      } else {
+        setState(() {
+          showErrorMsg = true;
+        });
+      }
     }
   }
 
@@ -56,23 +69,15 @@ class _LoginPage extends ConsumerState<LoginPage> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    // 4. use ref.watch() to get the value of the provider
-    final email = ref.watch(emailProvider);
+
     return Scaffold(
       appBar: CustomAppBar(
-        title: Text(AppLocalizations.of(context)!.flutterBoilerplate),
+        title: Text(AppLocalizations.of(context).flutterBoilerplate),
         showActionButton: true,
         iconName: Icons.language,
-        actionButtonColor: Colors.black,
-        onClick: () {
-          Alert(
-            title: "This is an alert",
-            onAccept: () {},
-            onDeny: () {},
-            message: "this is an custom alert widget.",
-          );
-        },
-        bgColor: Colors.amber[300],
+        actionButtonColor: AppColors.dark,
+        onClick: () {},
+        bgColor: AppColors.warning,
       ),
       body: Container(
           padding:
@@ -81,7 +86,7 @@ class _LoginPage extends ConsumerState<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  AppLocalizations.of(context)!.login,
+                  AppLocalizations.of(context).login,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontSize: FontSize.extralarge,
@@ -92,8 +97,8 @@ class _LoginPage extends ConsumerState<LoginPage> {
                 ),
                 TextInput(
                   controller: emailController,
-                  labelText: AppLocalizations.of(context)!.email,
-                  hintText: AppLocalizations.of(context)!.enterYourEmail,
+                  labelText: AppLocalizations.of(context).email,
+                  hintText: AppLocalizations.of(context).enterYourEmail,
                   icon: Icons.email,
                   keyboardType: TextInputType.emailAddress,
                   onChanged: (val) =>
@@ -105,8 +110,8 @@ class _LoginPage extends ConsumerState<LoginPage> {
                 // Text(email),
                 TextInput(
                   controller: passwordController,
-                  labelText: AppLocalizations.of(context)!.password,
-                  hintText: AppLocalizations.of(context)!.enterYourPassword,
+                  labelText: AppLocalizations.of(context).password,
+                  hintText: AppLocalizations.of(context).enterYourPassword,
                   icon: Icons.lock,
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: !isChecked,
@@ -119,13 +124,13 @@ class _LoginPage extends ConsumerState<LoginPage> {
                 ),
                 if (showErrorMsg)
                   Text(
-                    AppLocalizations.of(context)!.invalidEmailOrPassword,
+                    AppLocalizations.of(context).invalidEmailOrPassword,
                     style: const TextStyle(
                         color: AppColors.danger, fontSize: FontSize.medium),
                   ),
                 CheckboxButton(
                   value: isChecked,
-                  label: AppLocalizations.of(context)!.showPassword,
+                  label: AppLocalizations.of(context).showPassword,
                   onChanged: (newValue) {
                     setState(() {
                       isChecked = newValue!;
@@ -136,8 +141,8 @@ class _LoginPage extends ConsumerState<LoginPage> {
                   height: 20,
                 ),
                 CustomButton(
-                  btnLabel: AppLocalizations.of(context)!.login,
-                  onClick: () {
+                  btnLabel: AppLocalizations.of(context).login,
+                  onClick: () async {
                     onLogin();
                   },
                   buttonWidth: screenWidth * 0.4,

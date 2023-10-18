@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/widgets/theme.dart';
+import 'package:flutter_boilerplate/theme.dart';
 
 class CustomButton extends StatelessWidget {
   final String btnLabel;
@@ -25,7 +25,8 @@ class CustomButton extends StatelessWidget {
 
     return Center(
         child: SizedBox(
-            width: buttonWidth ?? screenWidth * 0.8,
+            width:
+                buttonWidth ?? screenWidth * 0.8, //common folder declare width
             child: Container(
                 constraints: BoxConstraints(minHeight: buttonHeight ?? 55.0),
                 decoration: BoxDecoration(

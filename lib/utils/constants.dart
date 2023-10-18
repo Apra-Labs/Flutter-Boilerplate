@@ -5,8 +5,11 @@ class Texts {
 }
 
 class LoginCredentials {
-  static const String email = "swagats@apra.in";
-  static const String password = "Swagat@123";
+  static const List<String> emailList = [
+    "swagats@apra.in",
+    "manjunathh@apra.in",
+    "deepakj@apra.in"
+  ];
 }
 
 enum Gender { male, female, other }
