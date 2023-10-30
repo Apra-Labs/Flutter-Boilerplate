@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 import 'package:flutter_boilerplate/theme.dart';
 
 class DatePicker extends StatelessWidget {
@@ -33,11 +34,11 @@ class DatePicker extends StatelessWidget {
               onDateChanged!(pickedDate);
             }
           },
-          child: Text(
-            "${selectedDate.toLocal()}".split(' ')[0],
-            style: TextStyle(
-                fontSize: fontsize ?? 28, fontWeight: FontWeight.normal),
-          ),
+          child: Text("${selectedDate.toLocal()}".split(' ')[0],
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall!
+                  .copyWith(fontSize: fontsize, color: AppColorsPalette.dark)),
         ),
       ],
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 import 'dart:math';
-import 'package:flutter_boilerplate/theme.dart';
 
 enum DotType { square, circle, diamond, icon }
 
@@ -15,9 +15,9 @@ class LoadingDots extends StatefulWidget {
 
   const LoadingDots(
       {super.key,
-      this.dotOneColor = AppColors.primary,
-      this.dotTwoColor = AppColors.primary,
-      this.dotThreeColor = AppColors.primary,
+      this.dotOneColor = AppColorsPalette.primary,
+      this.dotTwoColor = AppColorsPalette.primary,
+      this.dotThreeColor = AppColorsPalette.primary,
       this.duration = const Duration(milliseconds: 1000),
       this.dotType = DotType.circle,
       this.dotIcon = const Icon(Icons.blur_on),
@@ -68,6 +68,12 @@ class _LoadingDotsState extends State<LoadingDots>
     });
 
     controller.repeat();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -125,12 +131,6 @@ class _LoadingDotsState extends State<LoadingDots>
         ),
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 }
 

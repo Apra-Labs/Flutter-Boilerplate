@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 import 'package:flutter_boilerplate/utils/route_utils.dart';
 import 'package:flutter_boilerplate/utils/shared_preferences_utils.dart';
-import 'package:flutter_boilerplate/theme.dart';
 import '../../routes/route.dart' as route;
 
 class SplashScreen extends StatefulWidget {
@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColorsPalette.white,
       body: Stack(children: [
         ScaleTransition(
           scale: _animation,
@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen>
             child: Text(
               "\u00a9 Apra Labs Private Limited",
               style: TextStyle(
-                color: AppColors.primary,
+                color: AppColorsPalette.primary,
               ),
             ),
           ),

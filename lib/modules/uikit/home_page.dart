@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/alert_variants.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 import 'package:flutter_boilerplate/modules/login/login_page.dart';
 import 'package:flutter_boilerplate/modules/profile/profile_page.dart';
+import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/utils/route_utils.dart';
 import 'package:flutter_boilerplate/button_variants.dart';
 import 'package:flutter_boilerplate/widgets/alert.dart';
@@ -16,7 +18,6 @@ import 'package:flutter_boilerplate/widgets/dropdown.dart';
 import 'package:flutter_boilerplate/widgets/loading_widget.dart';
 import 'package:flutter_boilerplate/widgets/radio_button.dart';
 import 'package:flutter_boilerplate/widgets/text_input.dart';
-import 'package:flutter_boilerplate/theme.dart';
 import 'package:flutter_boilerplate/widgets/time_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -40,19 +41,15 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
     final email = ref.watch(emailProvider);
     final name = ref.watch(nameProvider);
-
+    final AppColors appColors = Theme.of(context).extension<AppColors>()!;
     return Scaffold(
       appBar: CustomAppBar(
-        title: const Text("UI Kit"),
+        title: setText("UI Kit"),
         showActionButton: true,
         iconName: Icons.language,
-        // actionButtonColor: Colors.black,
         onClick: () {},
-        // bgColor: Colors.amber[300],
       ),
       body: SingleChildScrollView(
           child: Container(
@@ -63,11 +60,11 @@ class _HomePageState extends ConsumerState<HomePage> {
             const SizedBox(
               height: 10,
             ),
-            Text(
-              "Welcome $name",
-              style: const TextStyle(
-                  fontSize: FontSize.extralarge, color: AppColors.blue),
-            ),
+            Text("Welcome $name",
+                style: Theme.of(context).textTheme.headlineMedium
+                //  TextStyle(
+                //     fontSize: FontSize.extralarge, color: appColors.dark),
+                ),
             const SizedBox(
               height: 10,
             ),
@@ -82,7 +79,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 50),
               child: CustomButton(
-                btnLabel: "Custom btn",
+                btnLabel: "Custom btn2",
                 onClick: () {},
                 variant: ButtonVariant.success,
               ),
@@ -91,7 +88,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               title: "This is an alert",
               onAccept: () {},
               onDeny: () {},
-              message: "this is an custom alert widget.",
+              message: "this is a custom alert widget.",
               variant: Variant.danger,
             ),
             AppCard(
@@ -106,8 +103,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                     },
                     variant: ButtonVariant.outlineDark,
                     borderStyle: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        color: AppColors.dark),
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
                   ),
                 ],
               ),
@@ -127,7 +124,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               onChanged: (val) => {print("selected val = $val")},
               labelText: "Choose language",
               filled: true,
-              fillColor: AppColors.gray3,
+              fillColor: appColors.gray3,
               borderRadius: 20,
             ),
             const SizedBox(
@@ -148,7 +145,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
             RadioButton<Gender>(
               value: Gender.male,
-              variant: Variant.success,
+              variant: Variant.warning,
               groupValue: selectedGender,
               onChanged: (value) {
                 setState(() {
@@ -159,7 +156,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
             RadioButton<Gender>(
               value: Gender.female,
-              variant: Variant.warning,
+              variant: Variant.success,
               groupValue: selectedGender,
               onChanged: (value) {
                 setState(() {
@@ -228,7 +225,6 @@ class _HomePageState extends ConsumerState<HomePage> {
         ),
       )),
       bottomNavigationBar: CustomBottomBar(
-        // icons: const [Icons.settings, Icons.person_pin_sharp, Icons.assignment],
         items: [
           BottomBarItem(
             icon: Icons.settings,

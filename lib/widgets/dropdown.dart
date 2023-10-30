@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/theme.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 
 //This drop down is only for input type as string
 class DropDown<String> extends StatelessWidget {
@@ -22,7 +22,7 @@ class DropDown<String> extends StatelessWidget {
       this.labelText,
       this.filled = false,
       this.icon,
-      this.fillColor = AppColors.gray,
+      this.fillColor = AppColorsPalette.gray,
       this.errorText})
       : super(key: key);
 

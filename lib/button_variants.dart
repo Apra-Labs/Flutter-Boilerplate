@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/theme.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 
 // Enum to represent different button variants
 enum ButtonVariant {
@@ -31,7 +31,7 @@ TextStyle getButtonStyle(ButtonVariant variant, BuildContext context) {
     case ButtonVariant.danger:
     case ButtonVariant.dark:
       return Theme.of(context).textTheme.labelLarge!.copyWith(
-            color: AppColors.white,
+            color: AppColorsPalette.white,
           );
     case ButtonVariant.warning:
     case ButtonVariant.info:
@@ -39,53 +39,53 @@ TextStyle getButtonStyle(ButtonVariant variant, BuildContext context) {
       return Theme.of(context)
           .textTheme
           .labelLarge!
-          .copyWith(color: AppColors.dark2);
+          .copyWith(color: AppColorsPalette.dark2);
     case ButtonVariant.link:
       return Theme.of(context).textTheme.labelLarge!.copyWith(
-          color: AppColors.blue,
-          backgroundColor: AppColors.transparent,
+          color: AppColorsPalette.blue,
+          backgroundColor: AppColorsPalette.transparent,
           decoration: TextDecoration.underline,
-          decorationColor: AppColors.blue);
+          decorationColor: AppColorsPalette.blue);
     case ButtonVariant.outlinePrimary:
       return Theme.of(context)
           .textTheme
           .labelLarge!
-          .copyWith(color: AppColors.blue);
+          .copyWith(color: AppColorsPalette.blue);
     case ButtonVariant.outlineSecondary:
       return Theme.of(context)
           .textTheme
           .labelLarge!
-          .copyWith(color: AppColors.textNormal);
+          .copyWith(color: AppColorsPalette.textNormal);
     case ButtonVariant.outlineSuccess:
       return Theme.of(context)
           .textTheme
           .labelLarge!
-          .copyWith(color: AppColors.positive);
+          .copyWith(color: AppColorsPalette.positive);
     case ButtonVariant.outlineWarning:
       return Theme.of(context)
           .textTheme
           .labelLarge!
-          .copyWith(color: AppColors.warning);
+          .copyWith(color: AppColorsPalette.warning);
     case ButtonVariant.outlineDanger:
       return Theme.of(context)
           .textTheme
           .labelLarge!
-          .copyWith(color: AppColors.danger);
+          .copyWith(color: AppColorsPalette.danger);
     case ButtonVariant.outlineInfo:
       return Theme.of(context)
           .textTheme
           .labelLarge!
-          .copyWith(color: AppColors.gray3);
+          .copyWith(color: AppColorsPalette.gray3);
     case ButtonVariant.outlineLight:
       return Theme.of(context)
           .textTheme
           .labelLarge!
-          .copyWith(color: AppColors.light);
+          .copyWith(color: AppColorsPalette.light);
     case ButtonVariant.outlineDark:
       return Theme.of(context)
           .textTheme
           .labelLarge!
-          .copyWith(color: AppColors.dark2);
+          .copyWith(color: AppColorsPalette.dark2);
   }
 }
 
@@ -93,21 +93,21 @@ TextStyle getButtonStyle(ButtonVariant variant, BuildContext context) {
 Color getButtonBackgroundColor(ButtonVariant variant, BuildContext context) {
   switch (variant) {
     case ButtonVariant.primary:
-      return AppColors.blue;
+      return AppColorsPalette.blue;
     case ButtonVariant.secondary:
-      return AppColors.textNormal;
+      return AppColorsPalette.textNormal;
     case ButtonVariant.success:
-      return AppColors.positive;
+      return AppColorsPalette.positive;
     case ButtonVariant.danger:
-      return AppColors.danger;
+      return AppColorsPalette.danger;
     case ButtonVariant.warning:
-      return AppColors.warning;
+      return AppColorsPalette.warning;
     case ButtonVariant.dark:
-      return AppColors.dark;
+      return AppColorsPalette.dark;
     case ButtonVariant.info:
-      return AppColors.gray3;
+      return AppColorsPalette.gray3;
     case ButtonVariant.light:
-      return AppColors.light;
+      return AppColorsPalette.light;
     case ButtonVariant.link:
     case ButtonVariant.outlinePrimary:
     case ButtonVariant.outlineSecondary:
@@ -117,7 +117,7 @@ Color getButtonBackgroundColor(ButtonVariant variant, BuildContext context) {
     case ButtonVariant.outlineInfo:
     case ButtonVariant.outlineLight:
     case ButtonVariant.outlineDark:
-      return Colors.transparent;
+      return AppColorsPalette.transparent;
   }
 }
 
@@ -125,21 +125,21 @@ Color getButtonBackgroundColor(ButtonVariant variant, BuildContext context) {
 Color getButtonBorderColor(ButtonVariant variant, BuildContext context) {
   switch (variant) {
     case ButtonVariant.outlinePrimary:
-      return AppColors.blue;
+      return AppColorsPalette.blue;
     case ButtonVariant.outlineSecondary:
-      return AppColors.textNormal;
+      return AppColorsPalette.textNormal;
     case ButtonVariant.outlineSuccess:
-      return AppColors.positive;
+      return AppColorsPalette.positive;
     case ButtonVariant.outlineDanger:
-      return AppColors.danger;
+      return AppColorsPalette.danger;
     case ButtonVariant.outlineWarning:
-      return AppColors.warning;
+      return AppColorsPalette.warning;
     case ButtonVariant.outlineDark:
-      return AppColors.dark;
+      return AppColorsPalette.dark;
     case ButtonVariant.outlineInfo:
-      return AppColors.gray3;
+      return AppColorsPalette.gray3;
     case ButtonVariant.outlineLight:
-      return AppColors.light;
+      return AppColorsPalette.light;
     case ButtonVariant.link:
     case ButtonVariant.primary:
     case ButtonVariant.secondary:
@@ -149,6 +149,6 @@ Color getButtonBorderColor(ButtonVariant variant, BuildContext context) {
     case ButtonVariant.info:
     case ButtonVariant.light:
     case ButtonVariant.dark:
-      return Colors.transparent;
+      return AppColorsPalette.transparent;
   }
 }

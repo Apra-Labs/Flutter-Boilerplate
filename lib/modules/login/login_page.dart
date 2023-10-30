@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
+import 'package:flutter_boilerplate/providers/providers.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/utils/loading_utils.dart';
 import 'package:flutter_boilerplate/utils/route_utils.dart';
 import 'package:flutter_boilerplate/utils/shared_preferences_utils.dart';
 import 'package:flutter_boilerplate/widgets/checkbox.dart';
 import 'package:flutter_boilerplate/widgets/button.dart';
-import 'package:flutter_boilerplate/theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_boilerplate/widgets/app_bar.dart';
 import 'package:flutter_boilerplate/widgets/text_input.dart';
@@ -67,17 +68,15 @@ class _LoginPage extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       appBar: CustomAppBar(
-        title: Text(AppLocalizations.of(context).flutterBoilerplate),
+        title: setText(AppLocalizations.of(context).flutterBoilerplate),
         showActionButton: true,
         iconName: Icons.language,
-        // actionButtonColor: AppColors.dark,
-        onClick: () {},
-        // bgColor: AppColors.warning,
+        onClick: () {
+          ref.read(appThemeProvider.notifier).state =
+              !ref.read(appThemeProvider.notifier).state;
+        },
       ),
       body: Container(
           padding:
@@ -85,13 +84,9 @@ class _LoginPage extends ConsumerState<LoginPage> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  AppLocalizations.of(context).login,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: FontSize.extralarge,
-                      fontWeight: FontWeight.w500),
-                ),
+                Text(AppLocalizations.of(context).login,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineMedium),
                 const SizedBox(
                   height: 20,
                 ),
@@ -125,8 +120,10 @@ class _LoginPage extends ConsumerState<LoginPage> {
                 if (showErrorMsg)
                   Text(
                     AppLocalizations.of(context).invalidEmailOrPassword,
-                    style: const TextStyle(
-                        color: AppColors.danger, fontSize: FontSize.medium),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(color: AppColorsPalette.danger),
                   ),
                 CheckboxButton(
                   value: isChecked,
@@ -145,13 +142,9 @@ class _LoginPage extends ConsumerState<LoginPage> {
                   onClick: () async {
                     onLogin();
                   },
-                  // style: const TextStyle(
-                  //     color: AppColors.gray,
-                  //     fontSize: FontSize.miniheader,
-                  //     backgroundColor: AppColors.blue),
                   borderStyle: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: AppColors.blue),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
               ])),
     );

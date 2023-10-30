@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 import 'package:flutter_boilerplate/theme.dart';
 
 enum Variant {
@@ -24,7 +25,7 @@ TextStyle getStyle(Variant variant) {
     case Variant.light:
     case Variant.dark:
       return const TextStyle(
-        color: AppColors.white,
+        color: AppColorsPalette.white,
         fontSize: FontSize.medium,
       );
   }
@@ -34,20 +35,20 @@ TextStyle getStyle(Variant variant) {
 Color getBackgroundColor(Variant variant) {
   switch (variant) {
     case Variant.primary:
-      return AppColors.blue;
+      return AppColorsPalette.blue;
     case Variant.secondary:
-      return AppColors.textNormal;
+      return AppColorsPalette.textNormal;
     case Variant.success:
-      return AppColors.positive;
+      return AppColorsPalette.positive;
     case Variant.danger:
-      return AppColors.danger;
+      return AppColorsPalette.danger;
     case Variant.warning:
-      return AppColors.warning;
+      return AppColorsPalette.warning;
     case Variant.dark:
-      return AppColors.dark;
+      return AppColorsPalette.dark;
     case Variant.info:
-      return AppColors.gray3;
+      return AppColorsPalette.gray3;
     case Variant.light:
-      return AppColors.light;
+      return AppColorsPalette.light;
   }
 }

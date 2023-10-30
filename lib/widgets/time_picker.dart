@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 import 'package:flutter_boilerplate/theme.dart';
 
 class TimePicker extends StatelessWidget {
-  //theme
   final TimeOfDay selectedTime;
   final ValueChanged<TimeOfDay>? onTimeChanged;
   final String label;
@@ -32,10 +32,11 @@ class TimePicker extends StatelessWidget {
               onTimeChanged!(pickedTime);
             }
           },
-          child: Text(
-            selectedTime.format(context),
-            style: TextStyle(fontSize: fontsize ?? FontSize.large),
-          ),
+          child: Text(selectedTime.format(context),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(fontSize: fontsize, color: AppColorsPalette.dark)),
         ),
       ],
     );

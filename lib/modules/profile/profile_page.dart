@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 import 'package:flutter_boilerplate/modules/login/login_page.dart';
 import 'package:flutter_boilerplate/routes/route.dart';
+import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/utils/loading_utils.dart';
 import 'package:flutter_boilerplate/utils/route_utils.dart';
 import 'package:flutter_boilerplate/utils/shared_preferences_utils.dart';
@@ -40,13 +42,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final AppColors appColors = Theme.of(context).extension<AppColors>()!;
     return Scaffold(
-      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: CustomAppBar(
-        title: Text(
-          "Profile",
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
+        title: setTextWithStyle(AppLocalizations.of(context).profile,
+            Theme.of(context).textTheme.headlineSmall),
         showActionButton: true,
         iconName: Icons.logout,
         onClick: () async {
@@ -65,7 +65,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     CustomCircleAvatar(
-                      backgroundColor: Colors.red.shade300,
+                      backgroundColor: AppColorsPalette.secondary2,
                       radius: 35.0,
                       child: const Icon(
                         Icons.call,
@@ -73,7 +73,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       ),
                     ),
                     CustomCircleAvatar(
-                      backgroundColor: Colors.white70,
+                      backgroundColor:
+                          appColors.gray2 ?? AppColorsPalette.gray2,
                       radius: 90.0,
                       child: const CircleAvatar(
                         radius: 80.0,
@@ -82,7 +83,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       ),
                     ),
                     CustomCircleAvatar(
-                      backgroundColor: Colors.red.shade300,
+                      backgroundColor: AppColorsPalette.secondary2,
                       radius: 35.0,
                       child: const Icon(
                         Icons.message,
@@ -108,7 +109,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   children: <Widget>[
                     Expanded(
                       child: Container(
-                        color: Color(0xFFeec6ca),
+                        color: AppColorsPalette.pink2,
                         child: const ListTile(
                           title: Header2(title: "5000"),
                           subtitle: Header4(title: "Followers"),
@@ -117,7 +118,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     ),
                     Expanded(
                       child: Container(
-                        color: Color(0xFFffb7c3),
+                        color: AppColorsPalette.pink,
                         child: const ListTile(
                           title: Header2(title: "5000"),
                           subtitle: Header4(title: "Following"),
@@ -134,7 +135,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     ListTile(
                       title: Header4(
                         title: "Email",
-                        textColor: Colors.deepOrange,
+                        textColor: AppColorsPalette.orange,
                         textAlign: TextAlign.left,
                       ),
                       subtitle: Paragraph(text: "john@gmail.com"),
@@ -143,7 +144,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     ListTile(
                       title: Header4(
                         title: "GitHub",
-                        textColor: Colors.deepOrange,
+                        textColor: AppColorsPalette.orange,
                         textAlign: TextAlign.left,
                       ),
                       subtitle: Paragraph(text: "https://github.com/john"),
@@ -152,7 +153,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     ListTile(
                       title: Header4(
                         title: "Linkedin",
-                        textColor: Colors.deepOrange,
+                        textColor: AppColorsPalette.orange,
                         textAlign: TextAlign.left,
                       ),
                       subtitle:
@@ -184,9 +185,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         selectedIndex: 1,
         onItemSelected: (index) async {
           if (index == 2) {
-            // LoadingUtils(context).startLoading();
-            // await Future.delayed(const Duration(seconds: 1));
-            // LoadingUtils(context).stopLoading();
             RouteUtils.goToPage(context, route.homePage);
           }
           if (index == 0) {

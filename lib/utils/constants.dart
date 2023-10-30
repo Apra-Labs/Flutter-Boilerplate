@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Texts {
   static const String acceptLabel = "OK";
   static const String closeLabel = "Close";
@@ -13,3 +15,14 @@ class LoginCredentials {
 }
 
 enum Gender { male, female, other }
+
+Widget setText(String text) {
+  return (Text(text));
+}
+
+Widget setTextWithStyle(String text, TextStyle? style) {
+  return (Text(
+    text,
+    style: style,
+  ));
+}

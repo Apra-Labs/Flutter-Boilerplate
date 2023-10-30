@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 import 'package:flutter_boilerplate/widgets/spinner.dart';
-import 'package:flutter_boilerplate/theme.dart';
 
 class LoadingUtils {
   late BuildContext context;
@@ -15,7 +15,7 @@ class LoadingUtils {
         builder: (BuildContext context) {
           return const SimpleDialog(
             elevation: 0.0,
-            backgroundColor: AppColors.transparent,
+            backgroundColor: AppColorsPalette.transparent,
             children: <Widget>[
               Center(
                 child: CircularProgress(),

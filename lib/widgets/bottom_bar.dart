@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/theme.dart';
+import 'package:flutter_boilerplate/color_schemes.dart';
 
 class CustomBottomBar extends StatelessWidget {
   final List<BottomBarItem> items;
@@ -65,7 +65,7 @@ class BottomBarItem {
   BottomBarItem({
     required this.icon,
     this.label,
-    this.selectedColor = AppColors.danger,
+    this.selectedColor = AppColorsPalette.danger,
     // this.unselectedColor = Colors.grey,
     this.iconSize = 30.0,
   });

@@ -27,7 +27,7 @@ class Alert extends StatelessWidget {
     this.body,
     this.acceptLabel = Texts.acceptLabel,
     this.denyLabel = Texts.closeLabel,
-    this.variant = Variant.primary, // Default variant is primary
+    this.variant = Variant.primary,
   }) : super(key: key);
 
   @override
