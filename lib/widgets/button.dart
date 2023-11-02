@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/button_variants.dart';
+import 'package:flutter_boilerplate/themes/button_variants.dart';
 
 class CustomButton extends StatelessWidget {
   final String btnLabel;
@@ -17,28 +17,28 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ButtonVariantStyle style = getButtonVariantStyle(variant, context);
     return Center(
       child: SizedBox(
         child: Container(
           decoration: BoxDecoration(
-            color: getButtonBackgroundColor(variant, context),
+            color: style.backgroundColor,
             borderRadius:
                 borderStyle?.borderRadius ?? BorderRadius.circular(10.0),
             border: Border.all(
-              color: getButtonBorderColor(variant, context),
+              color: style.borderColor,
               width: 1.0,
             ),
           ),
           child: TextButton(
             onPressed: onClick,
             style: TextButton.styleFrom(
-              backgroundColor: getButtonBackgroundColor(variant, context),
+              backgroundColor: style.backgroundColor,
             ),
             child: Center(
               child: Text(
                 btnLabel,
-                style: getButtonStyle(
-                    variant, context), // Use the style based on the variant
+                style: style.textStyle, // Use the style based on the variant
                 textAlign: TextAlign.center,
               ),
             ),

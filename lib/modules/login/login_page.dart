@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/color_schemes.dart';
+import 'package:flutter_boilerplate/themes/color_schemes.dart';
 import 'package:flutter_boilerplate/providers/providers.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/utils/loading_utils.dart';
@@ -13,15 +13,6 @@ import 'package:flutter_boilerplate/widgets/text_input.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../routes/route.dart' as route;
 
-final emailProvider = StateProvider<String>((_) => '');
-
-///object
-final passwordProvider = StateProvider<String>((_) => '');
-
-// final widgetState = StateProvider<Object>((_) => {
-//   email: '',
-// });
-
 // 1. extend [ConsumerStatefulWidget]
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -32,7 +23,6 @@ class LoginPage extends ConsumerStatefulWidget {
 
 // 2. extend [ConsumerState]
 class _LoginPage extends ConsumerState<LoginPage> {
-  //cleanup- lifecycle
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isChecked = false;
@@ -41,9 +31,13 @@ class _LoginPage extends ConsumerState<LoginPage> {
 
   @override
   void initState() {
-    super.initState();
-    // 3. if needed, we can read the provider inside initState
     final email = ref.read(emailProvider);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void onLogin() async {

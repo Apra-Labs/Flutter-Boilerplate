@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/alert_variants.dart';
+import 'package:flutter_boilerplate/themes/variants.dart';
 
 class AppCard extends StatelessWidget {
   final Variant variant;
@@ -21,9 +21,10 @@ class AppCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    VariantStyle style = getVariantStyle(variant);
     return Card(
       elevation: elevation ?? 5,
-      color: color ?? getBackgroundColor(variant),
+      color: color ?? style.backgroundColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius ?? 15),
       ),

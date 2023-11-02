@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/color_schemes.dart';
+import 'package:flutter_boilerplate/themes/color_schemes.dart';
 
 class TextInput extends StatelessWidget {
   final TextEditingController controller;
@@ -29,16 +29,16 @@ class TextInput extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obscureText,
       onChanged: onChanged,
-      cursorColor: appColors.dark,
+      cursorColor: appColors.dynamicTextColor,
       style: TextStyle(
-        color: appColors.dark,
+        color: appColors.dynamicTextColor,
       ),
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: TextStyle(color: appColors.dark),
+        labelStyle: TextStyle(color: appColors.dynamicTextColor),
         hintText: hintText,
-        enabledBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: appColors.dark!)),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: appColors.dynamicTextColor!)),
         icon: icon != null ? Icon(icon) : null,
         border: const OutlineInputBorder(),
       ),

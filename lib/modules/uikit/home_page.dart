@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/alert_variants.dart';
-import 'package:flutter_boilerplate/color_schemes.dart';
-import 'package:flutter_boilerplate/modules/login/login_page.dart';
-import 'package:flutter_boilerplate/modules/profile/profile_page.dart';
+import 'package:flutter_boilerplate/themes/variants.dart';
+import 'package:flutter_boilerplate/themes/color_schemes.dart';
+import 'package:flutter_boilerplate/providers/providers.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/utils/route_utils.dart';
-import 'package:flutter_boilerplate/button_variants.dart';
+import 'package:flutter_boilerplate/themes/button_variants.dart';
 import 'package:flutter_boilerplate/widgets/alert.dart';
 import 'package:flutter_boilerplate/widgets/app_bar.dart';
 import 'package:flutter_boilerplate/widgets/bottom_bar.dart';
@@ -61,17 +60,14 @@ class _HomePageState extends ConsumerState<HomePage> {
               height: 10,
             ),
             Text("Welcome $name",
-                style: Theme.of(context).textTheme.headlineMedium
-                //  TextStyle(
-                //     fontSize: FontSize.extralarge, color: appColors.dark),
-                ),
+                style: Theme.of(context).textTheme.headlineMedium),
             const SizedBox(
               height: 10,
             ),
             CustomButton(
               btnLabel: "Custom btn",
               onClick: () {},
-              variant: ButtonVariant.outlineDanger,
+              variant: ButtonVariant.info,
             ),
             const SizedBox(
               height: 20,
@@ -81,7 +77,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               child: CustomButton(
                 btnLabel: "Custom btn2",
                 onClick: () {},
-                variant: ButtonVariant.success,
+                variant: ButtonVariant.warning,
               ),
             ),
             Alert(

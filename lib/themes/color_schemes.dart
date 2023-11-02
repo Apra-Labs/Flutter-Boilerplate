@@ -43,6 +43,7 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color? gray;
   final Color? gray2;
   final Color? warning;
+  final Color? dynamicTextColor;
 
   const AppColors({
     this.blue,
@@ -54,6 +55,7 @@ class AppColors extends ThemeExtension<AppColors> {
     this.gray,
     this.gray2,
     this.warning,
+    this.dynamicTextColor,
   });
 
   @override
@@ -66,7 +68,8 @@ class AppColors extends ThemeExtension<AppColors> {
       Color? positive,
       Color? gray,
       Color? gray2,
-      Color? warning}) {
+      Color? warning,
+      Color? dynamicTextColor}) {
     return AppColors(
         blue: blue ?? this.blue,
         dark: dark ?? this.dark,
@@ -76,7 +79,8 @@ class AppColors extends ThemeExtension<AppColors> {
         positive: positive ?? this.positive,
         gray: gray ?? this.gray,
         gray2: gray2 ?? this.gray2,
-        warning: warning ?? this.warning);
+        warning: warning ?? this.warning,
+        dynamicTextColor: dynamicTextColor ?? this.dynamicTextColor);
   }
 
   @override
@@ -94,7 +98,9 @@ class AppColors extends ThemeExtension<AppColors> {
         positive: Color.lerp(positive, other.positive, t),
         gray: Color.lerp(gray, other.gray, t),
         gray2: Color.lerp(gray2, other.gray2, t),
-        warning: Color.lerp(warning, other.warning, t));
+        warning: Color.lerp(warning, other.warning, t),
+        dynamicTextColor:
+            Color.lerp(dynamicTextColor, other.dynamicTextColor, t));
   }
 }
 

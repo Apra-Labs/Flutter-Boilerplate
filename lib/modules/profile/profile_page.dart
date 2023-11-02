@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/color_schemes.dart';
-import 'package:flutter_boilerplate/modules/login/login_page.dart';
+import 'package:flutter_boilerplate/themes/color_schemes.dart';
+import 'package:flutter_boilerplate/providers/providers.dart';
 import 'package:flutter_boilerplate/routes/route.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/utils/loading_utils.dart';
@@ -16,8 +16,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../routes/route.dart' as route;
 
 enum Gender { male, female, other }
-
-final nameProvider = StateProvider<String>((_) => '');
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});

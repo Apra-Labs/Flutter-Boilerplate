@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/alert_variants.dart';
-import 'package:flutter_boilerplate/button_variants.dart';
+import 'package:flutter_boilerplate/themes/variants.dart';
+import 'package:flutter_boilerplate/themes/button_variants.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/widgets/button.dart';
 
@@ -32,24 +32,19 @@ class Alert extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    VariantStyle style = getVariantStyle(variant);
     return AlertDialog(
-      backgroundColor: getBackgroundColor(variant),
+      backgroundColor: style.backgroundColor,
       title: Align(
         alignment: titleAlignment ?? Alignment.center,
-        child: Text(
-          title,
-          style: titleTextStyle ?? getStyle(variant),
-        ),
+        child: Text(title, style: titleTextStyle ?? style.textStyle),
       ),
       contentPadding: const EdgeInsets.all(20.0),
       content: SingleChildScrollView(
         child: GestureDetector(
           child: Column(
             children: [
-              Text(
-                message,
-                style: getStyle(variant),
-              ),
+              Text(message, style: style.textStyle),
               body ?? Container(),
               const SizedBox(height: 20),
               Row(

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/color_schemes.dart';
+import 'package:flutter_boilerplate/themes/color_schemes.dart';
 import 'package:flutter_boilerplate/utils/route_utils.dart';
 import 'package:flutter_boilerplate/utils/shared_preferences_utils.dart';
 import '../../routes/route.dart' as route;
@@ -28,6 +28,13 @@ class _SplashScreenState extends State<SplashScreen>
     setLogginCredentails();
     checkLoginStatusAndNavigate();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Clean up resources, e.g., animation controller
+    _controller.dispose();
+    super.dispose();
   }
 
   void checkLoginStatusAndNavigate() async {

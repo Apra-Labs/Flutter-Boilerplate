@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/color_schemes.dart';
+import 'package:flutter_boilerplate/themes/color_schemes.dart';
 
 ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
   if (isDarkTheme) {
@@ -22,7 +22,7 @@ ThemeData lightTheme = ThemeData(
     extensions: const <ThemeExtension<dynamic>>[
       AppColors(
           blue: Color.fromRGBO(83, 112, 255, 1),
-          dark: Color.fromRGBO(0, 0, 0, 1),
+          dynamicTextColor: Color.fromRGBO(0, 0, 0, 1),
           gray3: Color.fromRGBO(169, 184, 255, 1),
           gray2: Color.fromRGBO(223, 223, 223, 1))
     ]);
@@ -40,7 +40,7 @@ ThemeData darkTheme = ThemeData(
     extensions: const <ThemeExtension<dynamic>>[
       AppColors(
           blue: Color.fromRGBO(238, 129, 96, 1),
-          dark: Color.fromRGBO(255, 255, 255, 1),
+          dynamicTextColor: Color.fromRGBO(255, 255, 255, 1),
           gray3: Color.fromRGBO(77, 99, 211, 1),
           gray2: Color.fromRGBO(112, 112, 112, 1))
     ]);

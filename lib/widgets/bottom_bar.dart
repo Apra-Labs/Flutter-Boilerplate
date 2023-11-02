@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/color_schemes.dart';
+import 'package:flutter_boilerplate/themes/color_schemes.dart';
 
 class CustomBottomBar extends StatelessWidget {
   final List<BottomBarItem> items;

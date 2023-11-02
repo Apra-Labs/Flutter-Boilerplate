@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/alert_variants.dart';
+import 'package:flutter_boilerplate/themes/variants.dart';
 
 class RadioButton<T> extends StatelessWidget {
   final Variant variant;
@@ -19,15 +19,15 @@ class RadioButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    VariantStyle style = getVariantStyle(variant);
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Radio<T>(
-          value: value,
-          groupValue: groupValue,
-          onChanged: onChanged,
-          activeColor: getBackgroundColor(variant),
-        ),
+            value: value,
+            groupValue: groupValue,
+            onChanged: onChanged,
+            activeColor: style.backgroundColor),
         Text(label),
       ],
     );

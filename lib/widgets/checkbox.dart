@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/alert_variants.dart';
+import 'package:flutter_boilerplate/themes/variants.dart';
 
 class CheckboxButton extends StatelessWidget {
   final Variant variant;
@@ -17,13 +17,13 @@ class CheckboxButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    VariantStyle style = getVariantStyle(variant);
     return Row(
       children: [
         Checkbox(
-          value: value,
-          onChanged: onChanged,
-          activeColor: getBackgroundColor(variant),
-        ),
+            value: value,
+            onChanged: onChanged,
+            activeColor: style.backgroundColor),
         Text(label),
       ],
     );

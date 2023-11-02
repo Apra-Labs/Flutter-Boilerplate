@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/l10n/l10n.dart';
 import 'package:flutter_boilerplate/providers/providers.dart';
-import 'package:flutter_boilerplate/theme.dart';
+import 'package:flutter_boilerplate/themes/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

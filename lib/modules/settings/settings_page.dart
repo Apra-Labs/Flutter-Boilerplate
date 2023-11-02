@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/color_schemes.dart';
+import 'package:flutter_boilerplate/themes/color_schemes.dart';
 import 'package:flutter_boilerplate/providers/providers.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/utils/route_utils.dart';
@@ -21,6 +21,7 @@ class SettingsPage extends ConsumerStatefulWidget {
 class _SettingsPage extends ConsumerState<SettingsPage> {
   @override
   Widget build(BuildContext context) {
+    // final appStatesParams = ref.watch(appStatesProvider.notifier).state;
     var isDarkTheme = ref.read(appThemeProvider);
     final AppColors appColors = Theme.of(context).extension<AppColors>()!;
     return Scaffold(
