@@ -27,7 +27,9 @@ class MyApp extends ConsumerWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: L10n.all, //add your languages inside L10n class
+      locale: ref.watch(appLanguage),
+      supportedLocales:
+          L10n.availableLanguageCodes, //add your languages inside L10n class
       // home: const LoginPage(),
       onGenerateRoute: route.controller,
       initialRoute: route.splashScreen,

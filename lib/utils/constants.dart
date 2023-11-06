@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+
+Locale getDeviceLocale() {
+  final String defaultLocale = Platform.localeName.split('_')[0];
+  print("defaultLocale = $defaultLocale");
+  return Locale(defaultLocale);
+}
 
 class Texts {
   static const String acceptLabel = "OK";
