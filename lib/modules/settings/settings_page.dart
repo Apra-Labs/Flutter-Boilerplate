@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/l10n/l10n.dart';
 import 'package:flutter_boilerplate/themes/color_schemes.dart';
 import 'package:flutter_boilerplate/providers/providers.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
@@ -21,7 +22,6 @@ class SettingsPage extends ConsumerStatefulWidget {
 class _SettingsPage extends ConsumerState<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    // final appStatesParams = ref.watch(appStatesProvider.notifier).state;
     var isDarkTheme = ref.read(appThemeProvider);
     final AppColors appColors = Theme.of(context).extension<AppColors>()!;
     return Scaffold(
@@ -46,21 +46,28 @@ class _SettingsPage extends ConsumerState<SettingsPage> {
                 AppLocalizations.of(context).languages,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              description: const Text('English'),
+              description: Text("${ref.read(appLanguage)}"),
               leading: const Icon(Icons.language),
+              enabled: true,
               onPressed: (BuildContext context) {
-                DropDown(
-                  items: const [
-                    "English",
-                    "German",
-                    "Spanish",
-                  ],
-                  onChanged: (val) => {print("selected val = $val")},
-                  labelText: "Choose language",
-                  filled: true,
-                  fillColor: appColors.blue,
-                  borderRadius: 20,
-                );
+                print("inside onpressed");
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return const AlertDialog(
+                        title: Text("Alert Dialog"),
+                        content: Text("Dialog Content"),
+                      );
+                    });
+                // DropDown(
+                //   items: L10n.availableLanguageCodes,
+                //   onChanged: (val) =>
+                //       {ref.read(appLanguage.notifier).state = Locale("$val")},
+                //   labelText: "Choose language",
+                //   filled: true,
+                //   fillColor: appColors.blue,
+                //   borderRadius: 20,
+                // );
               },
             ),
             SettingsTile.switchTile(

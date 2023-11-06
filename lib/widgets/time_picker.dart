@@ -2,11 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/themes/color_schemes.dart';
 import 'package:flutter_boilerplate/themes/theme.dart';
 
+/// A customizable time picker field with various styling options.
+///
+/// The `TimePicker` widget provides a flexible time picker field that can be customized
+/// with options such as [label], [fontsize], and [onTimeChanged].
+/// You can also specify the initial selected time using [selectedTime].
+
 class TimePicker extends StatelessWidget {
   final TimeOfDay selectedTime;
   final ValueChanged<TimeOfDay>? onTimeChanged;
   final String label;
   final double? fontsize;
+
+  /// Creates a `TimePicker` widget.
+  ///
+  /// The [key] is an optional parameter that can be used to identify this widget.
+  /// The [selectedTime] is the initial time to display in the time picker.
+  /// The [label] is the text that appears as a label for the time picker.
+  /// The [fontsize] is the font size of the displayed time.
+  /// The [onTimeChanged] callback is triggered when the selected time changes.
 
   const TimePicker({
     super.key,

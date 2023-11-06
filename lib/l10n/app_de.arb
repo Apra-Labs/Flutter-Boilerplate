@@ -17,5 +17,7 @@
     "languages": "Sprache",
     "darkTheme":"Dunkles Thema",
     "profile":"Profil",
-    "uiKit": "UI-Kit"
+    "uiKit": "UI-Kit",
+    "cancel":"stornieren",
+    "save" : "speichern"
 }

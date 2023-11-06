@@ -4,15 +4,30 @@ import 'dart:math';
 
 enum DotType { square, circle, diamond, icon }
 
+/// An animated widget to display loading dots with customizable properties.
 class LoadingDots extends StatefulWidget {
+  /// The color of the first loading dot.
   final Color dotOneColor;
+
+  /// The color of the second loading dot.
   final Color dotTwoColor;
+
+  /// The color of the third loading dot.
   final Color dotThreeColor;
+
+  /// The duration for one complete loading animation cycle.
   final Duration duration;
+
+  /// The type of loading dots to display (square, circle, diamond, or icon).
   final DotType dotType;
+
+  /// The icon to use for loading dots when `dotType` is set to `DotType.icon`.
   final Icon dotIcon;
+
+  /// The radius of each loading dot.
   final double radius;
 
+  /// Creates a `LoadingDots` widget with customizable loading dots animation.
   const LoadingDots(
       {super.key,
       this.dotOneColor = AppColorsPalette.primary,
@@ -134,12 +149,21 @@ class _LoadingDotsState extends State<LoadingDots>
   }
 }
 
+/// A single loading dot widget with customizable properties.
 class Dot extends StatelessWidget {
+  /// The radius of the loading dot.
   final double radius;
+
+  /// The color of the loading dot.
   final Color? color;
+
+  /// The type of loading dot to display (circle, square, diamond, or icon).
   final DotType type;
+
+  /// The icon to use for the loading dot when `type` is set to `DotType.icon`.
   final Icon icon;
 
+  /// Creates a `Dot` widget with customizable loading dot properties.
   const Dot(
       {super.key,
       required this.radius,

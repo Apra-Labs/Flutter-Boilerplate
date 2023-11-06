@@ -79,6 +79,7 @@ TextTheme setTextThemeAndColor(Color color) {
   ));
 }
 
+/// Change the font size values as per your use case.
 class FontSize {
   static const double header1 = 24.0;
   static const double header = 20.0;

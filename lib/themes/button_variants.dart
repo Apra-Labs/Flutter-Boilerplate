@@ -120,6 +120,7 @@ final buttonVariantStyles = {
   }
 };
 
+/// This function returns the buttons variant style.
 ButtonVariantStyle getButtonVariantStyle(
     ButtonVariant variant, BuildContext context) {
   final style = buttonVariantStyles[variant];

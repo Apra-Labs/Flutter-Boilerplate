@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/l10n/l10n.dart';
 import 'package:flutter_boilerplate/themes/variants.dart';
 import 'package:flutter_boilerplate/themes/color_schemes.dart';
 import 'package:flutter_boilerplate/providers/providers.dart';
@@ -112,13 +113,10 @@ class _HomePageState extends ConsumerState<HomePage> {
               height: 20,
             ),
             DropDown(
-              items: const [
-                "English",
-                "German",
-                "Spanish",
-              ],
-              onChanged: (val) => {print("selected val = $val")},
-              labelText: "Choose language",
+              items: L10n.availableLanguageCodes,
+              onChanged: (val) =>
+                  {ref.read(appLanguage.notifier).state = Locale("$val")},
+              labelText: ref.read(appLanguage),
               filled: true,
               fillColor: appColors.gray3,
               borderRadius: 20,

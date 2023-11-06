@@ -74,5 +74,13 @@
     "uiKit" : "UI Kit",
     "@uiKit" : {
         "description": "UI Kit"
+    },
+    "cancel" :"cancel",
+    "@cancel" : {
+        "description":"cancel"
+    },
+    "save" : "save",
+    "@save": {
+        "description":"save"
     }
 }
